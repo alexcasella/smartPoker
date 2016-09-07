@@ -3,37 +3,60 @@
 <head>
     <meta charset="UTF-8">
 
-    <link rel="stylesheet" href="CSS/external/reset.css">
+    <link rel = "stylesheet" href="CSS/external/reset.css">
     <link rel = "stylesheet" href = "CSS/external/bootstrap.min.css">
-    <link rel="stylesheet" href="CSS/card.css">
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel = "stylesheet" href="CSS/card.css">
+    <link rel = "stylesheet" href="CSS/style.css">
 
-    <script src='JS/external/angular.min.js'></script>
-    <script src = JS/external/bootstrap.min.js'></script>
-    <script src="JS/index.js"></script>
+    <script src = 'JS/external/angular.min.js'></script>
+    <script src = 'JS/external/jquery.min.js'></script>
+    <script src = 'JS/external/bootstrap.min.js'></script>
+    <script src = "JS/index.js"></script>
 
 </head>
 
-<body>
+<body ng-app="cards">
 
-<div ng-app="cards">
-
-    <header>
-        <p code>&lt;card suit="Hearts" value="5"&gt;&lt;/card&gt;</p>
-    </header>
-
-
-    <!--<div ng-repeat="suit in 'Spades Hearts Clubs Diamonds'.split(' ')">-->
-      <!--<card ng-repeat="value in 'Ace 2 3 4 5 6 7 8 9 10 Jack Queen King'.split(' ')" suit="{{suit}}" value="{{value}}"></card>-->
-    <!--</div>-->
-
-    <div>
-        <card suit="Hearts" value="5"></card>
-    </div>
-</div>
+<!--<div ng-repeat="suit in 'Spades Hearts Clubs Diamonds'.split(' ')">-->
+<!--<card ng-repeat="value in 'Ace 2 3 4 5 6 7 8 9 10 Jack Queen King'.split(' ')" suit="{{suit}}" value="{{value}}"></card>-->
+<!--</div>-->
 
 <div class = "container">
+    <hr class="colorgraph">
 
+    <h2>Enter your hand</h2>
+
+    <form class = "row form-group">
+        <div class = "col-md-2">
+            <select class="form-control" id="card_value">
+                <option>Card value</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+
+        <p>of</p>
+
+        <div class="col-md-2">
+            <select class="form-control" id="card_suit">
+                <option>Card suit</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-default">Show cards</button>
+        </div>
+    </form>
+
+    <div>
+        <!--<card suit="Hearts" value="5"></card>-->
+    </div>
 </div>
 
 
