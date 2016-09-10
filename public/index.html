@@ -27,35 +27,21 @@
     <h2>Enter your hand</h2>
 
     <form class = "row form-group">
-        <div class = "col-md-2">
-            <select class="form-control" id="card_value">
-                <option>Card value</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
+        <div class = "col-md-6">
+            <input ng-model = "card_value">
+
+            <span>of</span>
+
+            <input ng-model = "card_suit">
         </div>
 
-        <p>of</p>
-
-        <div class="col-md-2">
-            <select class="form-control" id="card_suit">
-                <option>Card suit</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
-        </div>
-
-        <div class="col-md-2">
-            <button type="submit" class="btn btn-default">Show cards</button>
-        </div>
     </form>
 
-    <div>
-        <!--<card suit="Hearts" value="5"></card>-->
+    <div class = "row">
+        <p>Entered: {{card_value}} of {{card_suit}}</p>
+
+        <card value = "{{card_value}}" suit = "{{card_suit}}"></card>
+        <!--<card value = "5" suit = "Clubs" ></card>-->
     </div>
 </div>
 
