@@ -1,4 +1,7 @@
 function showCards() {
+
+    $("#card_display").html("<h4> Loading ... </h4>");
+
     var value1 = $("#card1_value").val();
     var suit1 = $("#card1_suit").val().toLowerCase();
 
@@ -14,5 +17,5 @@ function showCards() {
     html += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
     html += '</div>';
 
-    $("#card_display").append(html);
+    $("#card_display").html(html);
 }
