@@ -3,46 +3,50 @@
 <head>
     <meta charset="UTF-8">
 
-    <link rel = "stylesheet" href="CSS/external/reset.css">
     <link rel = "stylesheet" href = "CSS/external/bootstrap.min.css">
     <link rel = "stylesheet" href="CSS/card.css">
     <link rel = "stylesheet" href="CSS/style.css">
+    <!--<link rel = "stylesheet" href="CSS/external/reset.css">-->
 
-    <script src = 'JS/external/angular.min.js'></script>
+    <!--<script src = 'JS/external/angular.min.js'></script>-->
     <script src = 'JS/external/jquery.min.js'></script>
     <script src = 'JS/external/bootstrap.min.js'></script>
     <script src = "JS/index.js"></script>
 
 </head>
 
-<body ng-app="cards">
-
-<!--<div ng-repeat="suit in 'Spades Hearts Clubs Diamonds'.split(' ')">-->
-<!--<card ng-repeat="value in 'Ace 2 3 4 5 6 7 8 9 10 Jack Queen King'.split(' ')" suit="{{suit}}" value="{{value}}"></card>-->
-<!--</div>-->
+<body>
 
 <div class = "container">
+
+    <h1>Enter your hand</h1>
+
     <hr class="colorgraph">
 
-    <h2>Enter your hand</h2>
+    <div class = "row">
 
-    <form class = "row form-group">
-        <div class = "col-md-6">
-            <input ng-model = "card_value">
-
-            <span>of</span>
-
-            <input ng-model = "card_suit">
-        </div>
-
-    </form>
+        <input id = "card1_value" placeholder = "Example. 5">
+        <label for = "card1_suit">of</label>
+        <input id = "card1_suit" placeholder = "Example. clubs">
+    </div>
 
     <div class = "row">
-        <p>Entered: {{card_value}} of {{card_suit}}</p>
-
-        <card value = "{{card_value}}" suit = "{{card_suit}}"></card>
-        <!--<card value = "5" suit = "Clubs" ></card>-->
+        <input id = "card2_value" placeholder = "Example. 5">
+        <label for = "card2_suit">of</label>
+        <input id = "card2_suit" placeholder = "Example. clubs">
     </div>
+
+    <div>
+        <button class="btn btn-default" type = "button" onclick = "showCards()">Show hand</button>
+    </div>
+
+    <hr class="colorgraph">
+
+    <div id = "card_display">
+
+    </div>
+
+    <hr class="colorgraph">
 </div>
 
 

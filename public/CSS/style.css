@@ -1,3 +1,10 @@
+body {
+    background-color: #373633;
+    font-family: "Lato", Calibri, Arial, sans-serif;
+    text-align: center;
+    color: orange;
+}
+
 .colorgraph {
     height: 5px;
     border-top: 0;
