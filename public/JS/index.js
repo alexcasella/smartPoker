@@ -5,7 +5,7 @@ function showCards() {
     var value1 = $("#card1_value").val();
     var suit1 = $("#card1_suit").val().toLowerCase();
 
-    var html = '<div class = "row"><h6>Pre-flop: </h6></div>';
+    var html = '<div class = "row"><h5>Pre-flop </h5></div>';
     html += '<div class = "row">';
     html += '   <div class="card ' + suit1 + ' v' + value1 +'">';
     html += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
