@@ -3,6 +3,7 @@ body {
     font-family: "Lato", Calibri, Arial, sans-serif;
     text-align: center;
     color: orange;
+    background-image: url('../IMAGES/poker_table_blur.jpg ');
 }
 
 .colorgraph {

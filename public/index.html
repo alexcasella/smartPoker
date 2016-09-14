@@ -6,12 +6,12 @@
     <link rel = "stylesheet" href = "CSS/external/bootstrap.min.css">
     <link rel = "stylesheet" href="CSS/card.css">
     <link rel = "stylesheet" href="CSS/style.css">
-    <!--<link rel = "stylesheet" href="CSS/external/reset.css">-->
+    <link rel="stylesheet" href="CSS/external/normalize.css">
 
     <!--<script src = 'JS/external/angular.min.js'></script>-->
     <script src = 'JS/external/jquery.min.js'></script>
     <script src = 'JS/external/bootstrap.min.js'></script>
-    <script src = "JS/index.js"></script>
+    <script src = 'JS/index.js'></script>
 
 </head>
 
@@ -23,61 +23,84 @@
 
     <hr class="colorgraph">
 
-    <div class = "row" class="form-group">
+    <div class = "row form-group">
         <div class = "col-md-2 col-md-offset-4">
+            <label>VALUE</label>
+        </div>
+
+        <div class = "col-md-2">
+            <label>SUIT</label>
+        </div>
+    </div>
+
+    <div class = "row form-group">
+        <div class = "col-md-2 col-md-offset-2">
+            <label> First card: </label>
+        </div>
+
+        <div class = "col-md-2">
             <select id = "card1_value" class = "form-control">
-                <option value = "">Select card value</option>
-                <option value = "2">2</option>
-                <option value = "3">3</option>
-                <option value = "4">4</option>
-                <option value = "5">5</option>
-                <option value = "6">6</option>
-                <option value = "7">7</option>
-                <option value = "8">8</option>
-                <option value = "9">9</option>
-                <option value = "10">10</option>
-                <option value = "11">Jack</option>
-                <option value = "12">Queen</option>
-                <option value = "13">King</option>
+                <option value = "">Select</option>
                 <option value = "1">Ace</option>
+                <option value = "13">King</option>
+                <option value = "12">Queen</option>
+                <option value = "11">Jack</option>
+                <option value = "10">10</option>
+                <option value = "9">9</option>
+                <option value = "8">8</option>
+                <option value = "7">7</option>
+                <option value = "6">6</option>
+                <option value = "5">5</option>
+                <option value = "4">4</option>
+                <option value = "3">3</option>
+                <option value = "2">2</option>
             </select>
         </div>
 
         <div class = "col-md-2">
             <select id = "card1_suit" class = "form-control">
-                <option value = "">Select card suit</option>
+                <option value = "">Select </option>
                 <option value = "clubs">Clubs</option>
                 <option value = "diamonds">Diamonds</option>
                 <option value = "hearts">Hearts</option>
                 <option value = "spades">Spades</option>
             </select>
         </div>
+    </div>
 
+    <div class = "row">
+        <div class = "col-md-offset-6">
+            <button class="btn btn-default" type = "button" onclick = "showCards()">Show hand</button>
+        </div>
     </div>
 
     <div class = "row" class="form-group">
-        <div class = "col-md-2 col-md-offset-4">
+        <div class = "col-md-2 col-md-offset-2">
+            <label> Second card: </label>
+        </div>
+
+        <div class = "col-md-2">
             <select id = "card2_value" class = "form-control">
-                <option value = "">Select card value</option>
-                <option value = "2">2</option>
-                <option value = "3">3</option>
-                <option value = "4">4</option>
-                <option value = "5">5</option>
-                <option value = "6">6</option>
-                <option value = "7">7</option>
-                <option value = "8">8</option>
-                <option value = "9">9</option>
-                <option value = "10">10</option>
-                <option value = "11">Jack</option>
-                <option value = "12">Queen</option>
-                <option value = "13">King</option>
+                <option value = "">Select</option>
                 <option value = "1">Ace</option>
+                <option value = "13">King</option>
+                <option value = "12">Queen</option>
+                <option value = "11">Jack</option>
+                <option value = "10">10</option>
+                <option value = "9">9</option>
+                <option value = "8">8</option>
+                <option value = "7">7</option>
+                <option value = "6">6</option>
+                <option value = "5">5</option>
+                <option value = "4">4</option>
+                <option value = "3">3</option>
+                <option value = "2">2</option>
             </select>
         </div>
 
         <div class = "col-md-2">
             <select id = "card2_suit" class = "form-control">
-                <option value = "">Select card suit</option>
+                <option value = "">Select</option>
                 <option value = "clubs">Clubs</option>
                 <option value = "diamonds">Diamonds</option>
                 <option value = "hearts">Hearts</option>
@@ -87,22 +110,42 @@
 
     </div>
 
+
+    <hr class="colorgraph">
+
     <div>
-        <button class="btn btn-default" type = "button" onclick = "showCards()">Show hand</button>
+        <!-- Pre flop cards show up here -->
+
+        <div class = "row">
+            <h5>Pre-flop </h5>
+        </div>
+
+        <div class = "row" id = "card_display">
+            <div class="card back"></div>
+
+            <div class="card back col-md-offset-1"></div>
+        </div>
+
     </div>
 
     <hr class="colorgraph">
 
-    <div id = "card_display">
-        <!-- Cards show up here -->
-        <div class="card back">
+    <div>
+        <!-- Post flop cards show up here -->
+
+        <div class = "row">
+            <h5>Flop </h5>
         </div>
 
-        <div class="card back">
+        <div class = "row" id = "flop_card_display">
+            <div class="card back"></div>
+
+            <div class="card back col-md-offset-1"></div>
+
+            <div class="card back col-md-offset-1"></div>
         </div>
+
     </div>
-
-    <hr class="colorgraph">
 
 </div>
 

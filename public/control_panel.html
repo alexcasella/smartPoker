@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+
+    <!--<link rel = "stylesheet" href = "CSS/external/bootstrap.min.css">-->
+    <link rel="stylesheet" href="CSS/external/normalize.css">
+    <link rel = "stylesheet" href="CSS/card.css">
+    <!--<link rel = "stylesheet" href="CSS/style.css">-->
+    <link rel="stylesheet" href="CSS/control_panel.css">
+
+    <script src = 'JS/external/jquery.min.js'></script>
+    <script src = 'JS/external/bootstrap.min.js'></script>
+    <script src = 'JS/index.js'></script>
+</head>
+<body>
+
+<div class="toolbar">
+    <div class="button code">Input</div>
+    <div class="button console">Outs</div>
+    <div class="button diagram">Calculation</div>
+    <div class="button props">Cards</div>
+    <div class="button reset">Reset</div>
+</div>
+
+<div class="pretty-split-pane-frame">
+    <div class="split-pane fixed-left" id="split-pane-1">
+
+        <div class="split-pane-component" id="left-component">
+            <div class="split-pane fixed-bottom" id="split-pane-2">
+
+
+                <div class="split-pane-component" id="top-component-1">
+                    <div class="pretty-split-pane-component-inner code">
+                        <div class="title-section">
+                            <p>Input</p>
+                        </div>
+                        <p class="section-content">
+                            <!-- code -->
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="split-pane-divider" id="horizontal-divider-1"></div>
+
+                <div class="split-pane-component" id="bottom-component-1">
+                    <div class="pretty-split-pane-component-inner console">
+                        <div class="title-section">
+                            <p>Outs</p>
+                        </div>
+                        <p class="section-content">
+                            <!-- console -->
+
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <!--verical divider-->
+        <div class="split-pane-divider" id="vertical-divider"></div>
+        <!--verical divider-->
+
+
+
+        <div class="split-pane-component" id="right-component">
+            <div class="split-pane fixed-bottom" id="split-pane-2">
+
+                <div class="split-pane-component" id="top-component-2">
+                    <div class="pretty-split-pane-component-inner diagram">
+                        <div class="title-section">
+                            <p>Calculation</p>
+                        </div>
+                        <div class="section-content">
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="split-pane-divider" id="horizontal-divider-2"></div>
+
+                <div class="split-pane-component" id="bottom-component-2">
+                    <div class="pretty-split-pane-component-inner props">
+                        <div class="title-section">
+                            <p>Cards</p>
+                        </div>
+                        <div class="section-content">
+                            <!-- properties -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</body>
+</html>
