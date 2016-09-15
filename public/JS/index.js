@@ -1,3 +1,7 @@
+$( document ).ready(function() {
+
+});
+
 function showCards() {
 
     var value1 = $("#card1_value").val();
@@ -23,6 +27,18 @@ function showCards() {
 // split pane functions
 // ==========================================================================================================//
 (function($) {
+
+    $.fn.clickToggle = function(func1, func2) {
+        var funcs = [func1, func2];
+        this.data('toggleclicked', 0);
+        this.click(function() {
+            var data = $(this).data();
+            var tc = data.toggleclicked;
+            $.proxy(funcs[tc], this)();
+            data.toggleclicked = (tc + 1) % 2;
+        });
+        return this;
+    };
 
     $.fn.splitPane = function() {
         var $splitPanes = this;
@@ -292,7 +308,7 @@ function showCards() {
 $(function() {
     $('div.split-pane').splitPane();
 
-    $('.diagram').click(function() {
+    $('.calculation_section').clickToggle(function() {
 
         $('#left-component').css('width', '0px');
         $('#right-component').css('left', '0px');
@@ -301,9 +317,24 @@ $(function() {
         $('#top-component-2').css('bottom', '0px');
         $('#bottom-component-2').css('height', '0px');
         $('#horizontal-divider-2').css('bottom', '0px');
+    }, function () {
+        var winWidth = $('.split-pane').width();
+        var winHeight = $('.split-pane').height();
+
+        $('#left-component').css('width', winWidth / 2 + 'px');
+        $('#right-component').css('left', winWidth / 2  + 'px');
+        $('#vertical-divider').css('left', winWidth / 2 + 'px');
+
+        $('#top-component-1').css('bottom', winHeight / 2 + 'px');
+        $('#bottom-component-1').css('height', winHeight / 2 + 'px');
+        $('#horizontal-divider-1').css('bottom', winHeight / 2 + 'px');
+
+        $('#top-component-2').css('bottom', winHeight / 2 + 'px');
+        $('#bottom-component-2').css('height', winHeight / 2 + 'px');
+        $('#horizontal-divider-2').css('bottom', winHeight / 2 + 'px');
     });
 
-    $('.props').click(function() {
+    $('.cards_section').clickToggle(function() {
 
         var winWidth = $('.split-pane').width();
         var winHeight = $('.split-pane').height();
@@ -315,9 +346,24 @@ $(function() {
         $('#top-component-2').css('bottom', winHeight - 5 + 'px');
         $('#bottom-component-2').css('height', winHeight - 5 + 'px');
         $('#horizontal-divider-2').css('bottom', winHeight - 5 + 'px');
+    }, function () {
+        var winWidth = $('.split-pane').width();
+        var winHeight = $('.split-pane').height();
+
+        $('#left-component').css('width', winWidth / 2 + 'px');
+        $('#right-component').css('left', winWidth / 2  + 'px');
+        $('#vertical-divider').css('left', winWidth / 2 + 'px');
+
+        $('#top-component-1').css('bottom', winHeight / 2 + 'px');
+        $('#bottom-component-1').css('height', winHeight / 2 + 'px');
+        $('#horizontal-divider-1').css('bottom', winHeight / 2 + 'px');
+
+        $('#top-component-2').css('bottom', winHeight / 2 + 'px');
+        $('#bottom-component-2').css('height', winHeight / 2 + 'px');
+        $('#horizontal-divider-2').css('bottom', winHeight / 2 + 'px');
     });
 
-    $('.code').click(function() {
+    $('.input_section').clickToggle(function() {
 
         var winWidth = $('.split-pane').width();
         var winHeight = $('.split-pane').height();
@@ -329,9 +375,24 @@ $(function() {
         $('#top-component-1').css('bottom', '0px');
         $('#bottom-component-1').css('height', '0px');
         $('#horizontal-divider-1').css('bottom', '0px');
+    }, function () {
+        var winWidth = $('.split-pane').width();
+        var winHeight = $('.split-pane').height();
+
+        $('#left-component').css('width', winWidth / 2 + 'px');
+        $('#right-component').css('left', winWidth / 2  + 'px');
+        $('#vertical-divider').css('left', winWidth / 2 + 'px');
+
+        $('#top-component-1').css('bottom', winHeight / 2 + 'px');
+        $('#bottom-component-1').css('height', winHeight / 2 + 'px');
+        $('#horizontal-divider-1').css('bottom', winHeight / 2 + 'px');
+
+        $('#top-component-2').css('bottom', winHeight / 2 + 'px');
+        $('#bottom-component-2').css('height', winHeight / 2 + 'px');
+        $('#horizontal-divider-2').css('bottom', winHeight / 2 + 'px');
     });
 
-    $('.console').click(function() {
+    $('.outs_section').clickToggle(function() {
 
         var winWidth = $('.split-pane').width();
         var winHeight = $('.split-pane').height();
@@ -343,6 +404,21 @@ $(function() {
         $('#top-component-1').css('bottom', winHeight - 5 + 'px');
         $('#bottom-component-1').css('height', winHeight - 5 + 'px');
         $('#horizontal-divider-1').css('bottom', winHeight - 5 + 'px');
+    }, function () {
+        var winWidth = $('.split-pane').width();
+        var winHeight = $('.split-pane').height();
+
+        $('#left-component').css('width', winWidth / 2 + 'px');
+        $('#right-component').css('left', winWidth / 2  + 'px');
+        $('#vertical-divider').css('left', winWidth / 2 + 'px');
+
+        $('#top-component-1').css('bottom', winHeight / 2 + 'px');
+        $('#bottom-component-1').css('height', winHeight / 2 + 'px');
+        $('#horizontal-divider-1').css('bottom', winHeight / 2 + 'px');
+
+        $('#top-component-2').css('bottom', winHeight / 2 + 'px');
+        $('#bottom-component-2').css('height', winHeight / 2 + 'px');
+        $('#horizontal-divider-2').css('bottom', winHeight / 2 + 'px');
     });
 
     $('.reset').click(function() {
