@@ -196,10 +196,11 @@ body {
     padding-left: 13px;
     color: white;
     padding-top: 10px;
+    cursor: pointer;
 }
 
-
-#bottom-component-2 .cards_section {
+/* cards */
+.poker_table {
     background-image: url('../IMAGES/poker_table_blur.jpg ');
     color: orange;
 }
