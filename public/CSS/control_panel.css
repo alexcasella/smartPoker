@@ -138,6 +138,11 @@ body {
     bottom: 20em;
     margin-bottom: 5px;
 }
+
+#top-component-1 .section-content{
+    text-align: center;
+}
+
 #horizontal-divider-1 {
     bottom: 20em;
     height: 5px;
@@ -157,39 +162,19 @@ body {
     height: 30em;
 }
 #left-component {
-    width: 26em;
+    width: 40em;
 }
 #vertical-divider {
-    left: 26em;
+    left: 40em;
     width: 5px;
 }
 #right-component {
-    left: 26em;
+    left: 40em;
     margin-left: 5px;
 }
 /*end of github plugin css*/
 .pretty-split-pane-frame {
     height: 95%;
-}
-.toolbar {
-    height: 6%;
-    background-color: forestgreen;
-}
-.button {
-    font-style: italic;
-    font-weight: bold;
-    background-color: white;
-    border-radius: 8px;
-    color: black;
-    padding: 5px 5px 5px 5px;
-    margin: 8px;
-    width: 80px;
-    float: right;
-    cursor: pointer;
-    text-align: center;
-}
-.button:hover {
-    background-color: darkseagreen;
 }
 
 .pretty-split-pane-component-inner {
@@ -197,6 +182,7 @@ body {
 }
 .section-content {
     padding-top: 25px;
+    width: 100%;
 }
 .title-section {
     background-color: seagreen;
@@ -210,4 +196,37 @@ body {
     padding-left: 13px;
     color: white;
     padding-top: 10px;
+}
+
+
+#bottom-component-2 .cards_section {
+    background-image: url('../IMAGES/poker_table_blur.jpg ');
+    color: orange;
+}
+
+.toolbar {
+    height: 6%;
+    background-color: forestgreen;
+}
+
+.toolbar .button {
+    font-style: italic;
+    font-weight: bold;
+    background-color: white;
+    border-radius: 8px;
+    color: black;
+    padding: 5px 5px 5px 5px;
+    margin: 8px;
+    width: 80px;
+    float: right;
+    cursor: pointer;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: darkseagreen;
+}
+
+.container {
+    width: 100%;
 }
