@@ -1,24 +1,90 @@
 $( document ).ready(function() {
 
+    $("#flop_selections").hide();
+    $("#flop_card_display").hide();
+
+
+    $('input:radio[name=flop_buttons]').click(function(){
+        var flop_selected = $(this).val();
+
+        if (flop_selected == "yes_flop") {
+            yesFlop();
+        } else {
+            noFlop();
+        }
+    });
 });
 
-function showCards() {
-
+function showPreFlopCards() {
+    // First card pre-flop
     var value1 = $("#card1_value").val();
     var suit1 = $("#card1_suit").val().toLowerCase();
 
-    var html = '';
-    html += '   <div class="card ' + suit1 + ' v' + value1 +'">';
-    html += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
-
+    // Second card pre-flop
     var value2 = $("#card2_value").val();
     var suit2 = $("#card2_suit").val().toLowerCase();
 
-    html += '   <div class="card ' + suit2 + ' v' + value2 +' col-md-offset-1">';
-    html += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
+    var html = '';
 
-    $("#card_display").html("<h4> Loading ... </h4>").html(html);
+    if (value1 && suit1 && value2 && suit2) {
+        html += '   <div class="card ' + suit1 + ' v' + value1 +'">';
+        html += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
+
+        html += '   <div class="card ' + suit2 + ' v' + value2 +' col-md-offset-1">';
+        html += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
+
+        $("#card_display").html("<h4> Loading ... </h4>").html(html);
+    } else {
+        $("#card_display").html("<h4> Please enter both cards </h4>");
+    }
 }
+
+function yesFlop() {
+    $("#flop_selections").show();
+
+    $("#flop_card_display").show();
+}
+
+function noFlop() {
+    $("#flop_selections").hide();
+
+    $("#flop_card_display").hide();
+}
+
+function showFlopCards() {
+    var flop_value1 = $("#flop1_value").val();
+    var flop_suit1 = $("#flop1_suit").val().toLowerCase();
+
+    var flop_value2 = $("#flop2_value").val();
+    var flop_suit2 = $("#flop2_suit").val().toLowerCase();
+
+    var flop_value3 = $("#flop3_value").val();
+    var flop_suit3 = $("#flop3_suit").val().toLowerCase();
+
+    var html = '<hr class="colorgraph"> <div class = "row"> <h5>Flop </h5> </div> <div class = "row">';
+
+    if (flop_value1 && flop_suit1
+    && flop_value2 && flop_suit2
+    && flop_value3 && flop_suit3) {
+        html += '   <div class="card ' + flop_suit1 + ' v' + flop_value1 +'">';
+        html += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
+
+        html += '   <div class="card ' + flop_suit2 + ' v' + flop_value2 +' col-md-offset-1">';
+        html += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
+
+        html += '   <div class="card ' + flop_suit3 + ' v' + flop_value3 +' col-md-offset-1">';
+        html += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
+
+        html += '</div>';
+        $("#flop_card_display").html("<h4> Loading ... </h4>").html(html);
+    } else {
+        html += '</div>';
+        $("#flop_card_display").html("<h4> Please enter both cards </h4>");
+    }
+}
+
+
+
 
 
 // ==========================================================================================================//

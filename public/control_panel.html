@@ -38,7 +38,6 @@
                         </div>
                         <div class="section-content">
 
-
                         <!------------------------------------------------------------ code ------------------------------------------------>
                             <div class = "container">
 
@@ -46,7 +45,7 @@
 
                                 <hr class="colorgraph">
 
-                                <div class = "row form-group">
+                                <div class = "row">
                                     <div class = "col-md-2 col-md-offset-4">
                                         <label>VALUE</label>
                                     </div>
@@ -56,9 +55,10 @@
                                     </div>
                                 </div>
 
+                                <!-----------------   PRE-FLOP   ------------------->
                                 <div class = "row form-group">
                                     <div class = "col-md-2 col-md-offset-2">
-                                        <label> First card: </label>
+                                        <label> 1st card: </label>
                                     </div>
 
                                     <div class = "col-md-2">
@@ -91,9 +91,9 @@
                                     </div>
                                 </div>
 
-                                <div class = "row" class="form-group">
+                                <div class = "row form-group">
                                     <div class = "col-md-2 col-md-offset-2">
-                                        <label> Second card: </label>
+                                        <label> 2nd card: </label>
                                     </div>
 
                                     <div class = "col-md-2">
@@ -126,9 +126,136 @@
                                     </div>
                                 </div>
 
-                                <div class = "row">
+                                <div class = "row form-group">
                                     <div class = "col-md-2 col-md-offset-5">
-                                        <button class="btn btn-default" type = "button" onclick = "showCards()">Show</button>
+                                        <button class="btn btn-default" type = "button" onclick = "showPreFlopCards()">Show</button>
+                                    </div>
+                                </div>
+
+                                <div class = "row form-group">
+                                    <div class = "col-md-3 col-md-offset-3">
+                                        <input type="radio" name="flop_buttons" value="no_flop" id="no_flop">
+                                        <label for="no_flop"><span class="radio">No flop</span></label>
+                                    </div>
+
+                                    <div class = "col-md-3">
+                                        <input type="radio" name="flop_buttons" value="yes_flop" id="yes_flop">
+                                        <label for="yes_flop"><span class="radio">Flop</span></label>
+                                    </div>
+                                </div>
+
+                                <!-----------------   FLOP   ------------------->
+                                <div id = "flop_selections">
+
+                                    <div class = "row form-group">
+                                        <div class = "col-md-2 col-md-offset-2">
+                                            <label> 1st card: </label>
+                                        </div>
+
+                                        <div class = "col-md-2">
+                                            <select id = "flop1_value" class = "form-control">
+                                                <option value = "">-</option>
+                                                <option value = "1">Ace</option>
+                                                <option value = "13">King</option>
+                                                <option value = "12">Queen</option>
+                                                <option value = "11">Jack</option>
+                                                <option value = "10">10</option>
+                                                <option value = "9">9</option>
+                                                <option value = "8">8</option>
+                                                <option value = "7">7</option>
+                                                <option value = "6">6</option>
+                                                <option value = "5">5</option>
+                                                <option value = "4">4</option>
+                                                <option value = "3">3</option>
+                                                <option value = "2">2</option>
+                                            </select>
+                                        </div>
+
+                                        <div class = "col-md-2 col-xs-4">
+                                            <select id = "flop1_suit" class = "form-control">
+                                                <option value = "">-</option>
+                                                <option value = "clubs">Clubs</option>
+                                                <option value = "diamonds">Diamonds</option>
+                                                <option value = "hearts">Hearts</option>
+                                                <option value = "spades">Spades</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class = "row form-group">
+                                        <div class = "col-md-2 col-md-offset-2">
+                                            <label> 2nd card: </label>
+                                        </div>
+
+                                        <div class = "col-md-2">
+                                            <select id = "flop2_value" class = "form-control">
+                                                <option value = "">-</option>
+                                                <option value = "1">Ace</option>
+                                                <option value = "13">King</option>
+                                                <option value = "12">Queen</option>
+                                                <option value = "11">Jack</option>
+                                                <option value = "10">10</option>
+                                                <option value = "9">9</option>
+                                                <option value = "8">8</option>
+                                                <option value = "7">7</option>
+                                                <option value = "6">6</option>
+                                                <option value = "5">5</option>
+                                                <option value = "4">4</option>
+                                                <option value = "3">3</option>
+                                                <option value = "2">2</option>
+                                            </select>
+                                        </div>
+
+                                        <div class = "col-md-2">
+                                            <select id = "flop2_suit" class = "form-control">
+                                                <option value = "">-</option>
+                                                <option value = "clubs">Clubs</option>
+                                                <option value = "diamonds">Diamonds</option>
+                                                <option value = "hearts">Hearts</option>
+                                                <option value = "spades">Spades</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class = "row form-group">
+                                        <div class = "col-md-2 col-md-offset-2">
+                                            <label> 3rd card: </label>
+                                        </div>
+
+                                        <div class = "col-md-2">
+                                            <select id = "flop3_value" class = "form-control">
+                                                <option value = "">-</option>
+                                                <option value = "1">Ace</option>
+                                                <option value = "13">King</option>
+                                                <option value = "12">Queen</option>
+                                                <option value = "11">Jack</option>
+                                                <option value = "10">10</option>
+                                                <option value = "9">9</option>
+                                                <option value = "8">8</option>
+                                                <option value = "7">7</option>
+                                                <option value = "6">6</option>
+                                                <option value = "5">5</option>
+                                                <option value = "4">4</option>
+                                                <option value = "3">3</option>
+                                                <option value = "2">2</option>
+                                            </select>
+                                        </div>
+
+                                        <div class = "col-md-2">
+                                            <select id = "flop3_suit" class = "form-control">
+                                                <option value = "">-</option>
+                                                <option value = "clubs">Clubs</option>
+                                                <option value = "diamonds">Diamonds</option>
+                                                <option value = "hearts">Hearts</option>
+                                                <option value = "spades">Spades</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class = "row form-group">
+                                        <div class = "col-md-2 col-md-offset-5">
+                                            <button class="btn btn-default" type = "button" onclick = "showFlopCards()">Show</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -204,20 +331,17 @@
 
                                 </div>
 
-                                <hr class="colorgraph">
-
-                                <div>
-                                    <!-- Post flop cards show up here -->
+                                <!-- Flop cards show up here -->
+                                <div id = "flop_card_display">
+                                    <hr class="colorgraph">
 
                                     <div class = "row">
                                         <h5>Flop </h5>
                                     </div>
 
-                                    <div class = "row" id = "flop_card_display">
+                                    <div class = "row">
                                         <div class="card back"></div>
-
                                         <div class="card back col-md-offset-1"></div>
-
                                         <div class="card back col-md-offset-1"></div>
                                     </div>
 
