@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9af02cf7-ab7d-4fdd-8671-d4b96e82f069" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/JS/index.js" afterPath="$PROJECT_DIR$/public/JS/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/control_panel.html" afterPath="$PROJECT_DIR$/public/control_panel.html" />
     </list>
@@ -27,21 +26,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/JS/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="503">
-              <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+            <state relative-caret-position="375">
+              <caret line="172" column="36" selection-start-line="172" selection-start-column="36" selection-end-line="172" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="control_panel.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="control_panel.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/control_panel.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="488" column="0" selection-start-line="488" selection-start-column="0" selection-end-line="488" selection-end-column="0" />
+            <state relative-caret-position="2708">
+              <caret line="496" column="0" selection-start-line="496" selection-start-column="0" selection-end-line="496" selection-end-column="0" />
               <folding>
                 <element signature="e#4417#4424#0" expanded="true" />
                 <element signature="e#4511#4518#0" expanded="true" />
@@ -301,12 +300,12 @@
       <workItem from="1474564369274" duration="5182000" />
       <workItem from="1474901631735" duration="12000" />
       <workItem from="1474933578207" duration="106000" />
-      <workItem from="1475010841765" duration="13421000" />
+      <workItem from="1475010841765" duration="13852000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68881000" />
+    <option name="totallyTimeSpent" value="69312000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="1436" height="812" extended-state="6" />
@@ -668,24 +667,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/JS/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="172" column="36" selection-start-line="172" selection-start-column="36" selection-end-line="172" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/control_panel.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="488" column="0" selection-start-line="488" selection-start-column="0" selection-end-line="488" selection-end-column="0" />
+        <state relative-caret-position="2708">
+          <caret line="496" column="0" selection-start-line="496" selection-start-column="0" selection-end-line="496" selection-end-column="0" />
           <folding>
             <element signature="e#4417#4424#0" expanded="true" />
             <element signature="e#4511#4518#0" expanded="true" />
             <element signature="e#4606#4614#0" expanded="true" />
             <element signature="e#4700#4708#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/JS/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>

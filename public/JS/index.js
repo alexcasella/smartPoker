@@ -107,9 +107,9 @@ function showCards() {
         html += '   <div class="card ' + suit2 + ' v' + value2 +' col-md-offset-2">';
         html += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
-        $(".card_display").html(html);
+        $(".preflop_cards").html(html);
     } else {
-        $(".card_display").html("<h4> Please enter both cards </h4>");
+        $(".preflop_cards").html("<h4> Enter both cards for analysis :) </h4>");
     }
 
 
@@ -148,6 +148,7 @@ function showCards() {
 
     }
 
+
     // Turn card
     var turn_value = $("#turn_value").val();
     var turn_suit = $("#turn_suit").val().toLowerCase();
@@ -160,6 +161,21 @@ function showCards() {
         html_turn += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
         $(".turn_card").html(html_turn);
+    }
+
+
+    // River card
+    var river_value = $("#river_value").val();
+    var river_suit = $("#river_suit").val().toLowerCase();
+
+    var html_river = "";
+
+    if (river_value && river_suit) {
+
+        html_river += '   <div class="card ' + river_suit + ' v' + river_value +'">';
+        html_river += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
+
+        $(".river_card").html(html_river);
     }
 
 }
@@ -184,6 +200,14 @@ function calculateOdds() {
     // Third flop card
     var flop_value3 = $("#flop3_value").val();
     var flop_suit3 = $("#flop3_suit").val().toLowerCase();
+
+    // Turn card
+    var turn_value = $("#turn_value").val();
+    var turn_suit = $("#turn_suit").val().toLowerCase();
+
+    // River card
+    var river_value = $("#river_value").val();
+    var river_suit = $("#river_suit").val().toLowerCase();
 }
 
 
