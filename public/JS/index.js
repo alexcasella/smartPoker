@@ -1,7 +1,11 @@
 $( document ).ready(function() {
 
     $("#flop_selections").hide();
-    $("#flop_card_display").hide();
+    $("#post_flop_display").hide();
+    $(".turn_card").hide();
+    $(".river_card").hide();
+    $("#turn_selections").hide();
+    $("#river_selections").hide();
 
 
     $('input:radio[name=flop_buttons]').click(function(){
@@ -11,11 +15,79 @@ $( document ).ready(function() {
             yesFlop();
         } else {
             noFlop();
+            noTurn();
+            noRiver();
+
+            // clear radio buttons after hiding
+            $('input:radio[name=flop_buttons]').prop('checked', false);
+            $('input:radio[name=turn_buttons]').prop('checked', false);
+            $('input:radio[name=river_buttons]').prop('checked', false);
+        }
+    });
+
+    $('input:radio[name=turn_buttons]').click(function(){
+        var turn_selected = $(this).val();
+
+        if (turn_selected == "yes_turn") {
+            yesTurn();
+        } else {
+            noTurn();
+            noRiver();
+
+            $('input:radio[name=turn_buttons]').prop('checked', false);
+            $('input:radio[name=river_buttons]').prop('checked', false);
+        }
+    });
+
+    $('input:radio[name=river_buttons]').click(function(){
+        var river_selected = $(this).val();
+
+        if (river_selected == "yes_river") {
+            yesRiver();
+        } else {
+            noRiver();
+
+            $('input:radio[name=river_buttons]').prop('checked', false);
         }
     });
 });
 
-function showPreFlopCards() {
+
+function yesFlop() {
+    $("#flop_selections").show();
+
+    $("#post_flop_display").show();
+}
+
+function noFlop() {
+    $("#flop_selections").hide();
+
+    $("#post_flop_display").hide();
+}
+
+function yesTurn() {
+    $("#turn_selections").show();
+    $(".turn_card").show();
+}
+
+function noTurn() {
+    $("#turn_selections").hide();
+    $(".turn_card").hide();
+}
+
+function yesRiver() {
+    $("#river_selections").show();
+    $(".river_card").show();
+}
+
+function noRiver() {
+    $("#river_selections").hide();
+    $(".river_card").hide();
+}
+
+
+function showCards() {
+
     // First card pre-flop
     var value1 = $("#card1_value").val();
     var suit1 = $("#card1_suit").val().toLowerCase();
@@ -24,6 +96,8 @@ function showPreFlopCards() {
     var value2 = $("#card2_value").val();
     var suit2 = $("#card2_suit").val().toLowerCase();
 
+
+    // Pre-flop
     var html = '';
 
     if (value1 && suit1 && value2 && suit2) {
@@ -33,56 +107,84 @@ function showPreFlopCards() {
         html += '   <div class="card ' + suit2 + ' v' + value2 +' col-md-offset-1">';
         html += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
-        $("#card_display").html("<h4> Loading ... </h4>").html(html);
+        $("#card_display").html(html);
     } else {
         $("#card_display").html("<h4> Please enter both cards </h4>");
     }
-}
 
-function yesFlop() {
-    $("#flop_selections").show();
 
-    $("#flop_card_display").show();
-}
 
-function noFlop() {
-    $("#flop_selections").hide();
-
-    $("#flop_card_display").hide();
-}
-
-function showFlopCards() {
+    // First flop card
     var flop_value1 = $("#flop1_value").val();
     var flop_suit1 = $("#flop1_suit").val().toLowerCase();
 
+    // Second flop card
     var flop_value2 = $("#flop2_value").val();
     var flop_suit2 = $("#flop2_suit").val().toLowerCase();
 
+    // Third flop card
     var flop_value3 = $("#flop3_value").val();
     var flop_suit3 = $("#flop3_suit").val().toLowerCase();
 
-    var html = '<hr class="colorgraph"> <div class = "row"> <h5>Flop </h5> </div> <div class = "row">';
+
+    // Flop
+
+    var html_flop = "";
 
     if (flop_value1 && flop_suit1
-    && flop_value2 && flop_suit2
-    && flop_value3 && flop_suit3) {
-        html += '   <div class="card ' + flop_suit1 + ' v' + flop_value1 +'">';
-        html += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
+        && flop_value2 && flop_suit2
+        && flop_value3 && flop_suit3) {
 
-        html += '   <div class="card ' + flop_suit2 + ' v' + flop_value2 +' col-md-offset-1">';
-        html += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
+        html_flop += '   <div class="card ' + flop_suit1 + ' v' + flop_value1 +'">';
+        html_flop += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
-        html += '   <div class="card ' + flop_suit3 + ' v' + flop_value3 +' col-md-offset-1">';
-        html += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
+        html_flop += '   <div class="card ' + flop_suit2 + ' v' + flop_value2 +' col-md-offset-1">';
+        html_flop += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
-        html += '</div>';
-        $("#flop_card_display").html("<h4> Loading ... </h4>").html(html);
-    } else {
-        html += '</div>';
-        $("#flop_card_display").html("<h4> Please enter both cards </h4>");
+        html_flop += '   <div class="card ' + flop_suit3 + ' v' + flop_value3 +' col-md-offset-1">';
+        html_flop += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
+
+        $(".flop_turn_river_display").html(html_flop);
+
     }
+
+    // Turn card
+    var turn_value = $("#turn_value").val();
+    var turn_suit = $("#turn_suit").val().toLowerCase();
+
+    var html_turn = "";
+
+    if (turn_value && turn_suit) {
+
+        html_turn += '   <div class="card ' + turn_suit + ' v' + turn_value +' col-md-offset-1">';
+        html_turn += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
+
+        $(".flop_turn_river_display").append(html_turn);
+    }
+
 }
 
+function calculateOdds() {
+    // First card pre-flop
+    var value1 = $("#card1_value").val();
+    var suit1 = $("#card1_suit").val().toLowerCase();
+
+    // Second card pre-flop
+    var value2 = $("#card2_value").val();
+    var suit2 = $("#card2_suit").val().toLowerCase();
+
+    // First flop card
+    var flop_value1 = $("#flop1_value").val();
+    var flop_suit1 = $("#flop1_suit").val().toLowerCase();
+
+    // Second flop card
+    var flop_value2 = $("#flop2_value").val();
+    var flop_suit2 = $("#flop2_suit").val().toLowerCase();
+
+    // Third flop card
+    var flop_value3 = $("#flop3_value").val();
+    var flop_suit3 = $("#flop3_suit").val().toLowerCase();
+}
 
 
 

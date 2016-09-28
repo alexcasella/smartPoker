@@ -1,4 +1,4 @@
-
+/* ===================================================== Split Pane ===================================================== */
 .split-pane {
     position: relative;
     height: 100%;
@@ -135,7 +135,7 @@ body {
     font-size: 12px;
 }
 #top-component-1 {
-    bottom: 20em;
+    bottom: 32em;
     margin-bottom: 5px;
 }
 
@@ -144,11 +144,11 @@ body {
 }
 
 #horizontal-divider-1 {
-    bottom: 20em;
+    bottom: 32em;
     height: 5px;
 }
 #bottom-component-1 {
-    height: 20em;
+    height: 32em;
 }
 #top-component-2 {
     bottom: 30em;
@@ -199,7 +199,7 @@ body {
     cursor: pointer;
 }
 
-/* cards */
+/* ===================================================== Control Panel ===================================================== */
 .poker_table {
     background-image: url('../IMAGES/poker_table_blur.jpg ');
     color: orange;
@@ -231,3 +231,4 @@ body {
 .container {
     width: 100%;
 }
+

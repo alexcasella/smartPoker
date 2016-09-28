@@ -41,7 +41,13 @@
                         <!------------------------------------------------------------ code ------------------------------------------------>
                             <div class = "container">
 
-                                <h1>Enter your hand</h1>
+                                <h5>Enter your hand</h5>
+
+                                <div class = "row form-group">
+                                    <div class = "col-md-2 col-md-offset-5">
+                                        <button class="btn btn-default" type = "button" onclick = "showCards()">Show</button>
+                                    </div>
+                                </div>
 
                                 <hr class="colorgraph">
 
@@ -83,10 +89,10 @@
                                     <div class = "col-md-2 col-xs-4">
                                         <select id = "card1_suit" class = "form-control">
                                             <option value = "">-</option>
-                                            <option value = "clubs">Clubs</option>
-                                            <option value = "diamonds">Diamonds</option>
-                                            <option value = "hearts">Hearts</option>
-                                            <option value = "spades">Spades</option>
+                                            <option value = "clubs">&clubs; Clubs</option>
+                                            <option value = "diamonds">&diams; Diamonds</option>
+                                            <option value = "hearts">&hearts; Hearts</option>
+                                            <option value = "spades">&spades; Spades</option>
                                         </select>
                                     </div>
                                 </div>
@@ -127,12 +133,6 @@
                                 </div>
 
                                 <div class = "row form-group">
-                                    <div class = "col-md-2 col-md-offset-5">
-                                        <button class="btn btn-default" type = "button" onclick = "showPreFlopCards()">Show</button>
-                                    </div>
-                                </div>
-
-                                <div class = "row form-group">
                                     <div class = "col-md-3 col-md-offset-3">
                                         <input type="radio" name="flop_buttons" value="no_flop" id="no_flop">
                                         <label for="no_flop"><span class="radio">No flop</span></label>
@@ -143,6 +143,7 @@
                                         <label for="yes_flop"><span class="radio">Flop</span></label>
                                     </div>
                                 </div>
+
 
                                 <!-----------------   FLOP   ------------------->
                                 <div id = "flop_selections">
@@ -253,11 +254,110 @@
                                     </div>
 
                                     <div class = "row form-group">
-                                        <div class = "col-md-2 col-md-offset-5">
-                                            <button class="btn btn-default" type = "button" onclick = "showFlopCards()">Show</button>
+                                        <div class = "col-md-3 col-md-offset-3">
+                                            <input type="radio" name="turn_buttons" value="no_turn" id="no_turn">
+                                            <label for="no_turn"><span class="radio">No turn</span></label>
+                                        </div>
+
+                                        <div class = "col-md-3">
+                                            <input type="radio" name="turn_buttons" value="yes_turn" id="yes_turn">
+                                            <label for="yes_turn"><span class="radio">Turn</span></label>
                                         </div>
                                     </div>
                                 </div>
+
+
+                                <!-----------------   Turn   ------------------->
+                                <div id = "turn_selections">
+
+                                    <div class = "row form-group">
+                                        <div class = "col-md-2 col-md-offset-2">
+                                            <label> Turn card: </label>
+                                        </div>
+
+                                        <div class = "col-md-2">
+                                            <select id = "turn_value" class = "form-control">
+                                                <option value = "">-</option>
+                                                <option value = "1">Ace</option>
+                                                <option value = "13">King</option>
+                                                <option value = "12">Queen</option>
+                                                <option value = "11">Jack</option>
+                                                <option value = "10">10</option>
+                                                <option value = "9">9</option>
+                                                <option value = "8">8</option>
+                                                <option value = "7">7</option>
+                                                <option value = "6">6</option>
+                                                <option value = "5">5</option>
+                                                <option value = "4">4</option>
+                                                <option value = "3">3</option>
+                                                <option value = "2">2</option>
+                                            </select>
+                                        </div>
+
+                                        <div class = "col-md-2 col-xs-4">
+                                            <select id = "turn_suit" class = "form-control">
+                                                <option value = "">-</option>
+                                                <option value = "clubs">Clubs</option>
+                                                <option value = "diamonds">Diamonds</option>
+                                                <option value = "hearts">Hearts</option>
+                                                <option value = "spades">Spades</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class = "row form-group">
+                                        <div class = "col-md-3 col-md-offset-3">
+                                            <input type="radio" name="river_buttons" value="no_river" id="no_river">
+                                            <label for="no_river"><span class="radio">No river</span></label>
+                                        </div>
+
+                                        <div class = "col-md-3">
+                                            <input type="radio" name="river_buttons" value="yes_river" id="yes_river">
+                                            <label for="yes_river"><span class="radio">River</span></label>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-----------------   River   ------------------->
+                                <div id = "river_selections">
+
+                                    <div class = "row form-group">
+                                        <div class = "col-md-2 col-md-offset-2">
+                                            <label> River card: </label>
+                                        </div>
+
+                                        <div class = "col-md-2">
+                                            <select id = "river_value" class = "form-control">
+                                                <option value = "">-</option>
+                                                <option value = "1">Ace</option>
+                                                <option value = "13">King</option>
+                                                <option value = "12">Queen</option>
+                                                <option value = "11">Jack</option>
+                                                <option value = "10">10</option>
+                                                <option value = "9">9</option>
+                                                <option value = "8">8</option>
+                                                <option value = "7">7</option>
+                                                <option value = "6">6</option>
+                                                <option value = "5">5</option>
+                                                <option value = "4">4</option>
+                                                <option value = "3">3</option>
+                                                <option value = "2">2</option>
+                                            </select>
+                                        </div>
+
+                                        <div class = "col-md-2 col-xs-4">
+                                            <select id = "river_suit" class = "form-control">
+                                                <option value = "">-</option>
+                                                <option value = "clubs">Clubs</option>
+                                                <option value = "diamonds">Diamonds</option>
+                                                <option value = "hearts">Hearts</option>
+                                                <option value = "spades">Spades</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
 
                         <!------------------------------------------------------------ end ------------------------------------------------>
@@ -273,10 +373,66 @@
                         <div class="title-section outs_section">
                             <p>Outs</p>
                         </div>
-                        <p class="section-content">
-                            <!-- console -->
+                        <div class="section-content">
 
-                        </p>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Hands</th>
+                                    <th>Outs</th>
+                                    <th>Probability</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Royal flush</td>
+                                        <td>Doe</td>
+                                        <td>john@example.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Straight flush</td>
+                                        <td>Moe</td>
+                                        <td>mary@example.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4 of a kind</td>
+                                        <td>Dooley</td>
+                                        <td>july@example.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Full house</td>
+                                        <td>Dooley</td>
+                                        <td>july@example.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Flush</td>
+                                        <td>Dooley</td>
+                                        <td>july@example.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Straight</td>
+                                        <td>Dooley</td>
+                                        <td>july@example.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3 of a kind</td>
+                                        <td>Dooley</td>
+                                        <td>july@example.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2 pair</td>
+                                        <td>Dooley</td>
+                                        <td>july@example.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1 pair</td>
+                                        <td>Dooley</td>
+                                        <td>july@example.com</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
                     </div>
                 </div>
 
@@ -291,6 +447,7 @@
 
         <div class="split-pane-component" id="right-component">
             <div class="split-pane fixed-bottom">
+
 
                 <div class="split-pane-component" id="top-component-2">
                     <div class="pretty-split-pane-component-inner">
@@ -332,21 +489,22 @@
                                 </div>
 
                                 <!-- Flop cards show up here -->
-                                <div id = "flop_card_display">
+                                <div id = "post_flop_display">
                                     <hr class="colorgraph">
 
                                     <div class = "row">
-                                        <h5>Flop </h5>
+                                        <h5>Post-flop</h5>
                                     </div>
 
-                                    <div class = "row">
+                                    <div class = "row flop_turn_river_display">
                                         <div class="card back"></div>
                                         <div class="card back col-md-offset-1"></div>
                                         <div class="card back col-md-offset-1"></div>
+                                        <div class="turn_card card back col-md-offset-1"></div>
+                                        <div class="river_card card back col-md-offset-1"></div>
                                     </div>
 
                                 </div>
-
                             </div>
 
 
