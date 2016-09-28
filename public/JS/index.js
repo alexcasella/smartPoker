@@ -104,12 +104,12 @@ function showCards() {
         html += '   <div class="card ' + suit1 + ' v' + value1 +'">';
         html += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
-        html += '   <div class="card ' + suit2 + ' v' + value2 +' col-md-offset-1">';
+        html += '   <div class="card ' + suit2 + ' v' + value2 +' col-md-offset-2">';
         html += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
-        $("#card_display").html(html);
+        $(".card_display").html(html);
     } else {
-        $("#card_display").html("<h4> Please enter both cards </h4>");
+        $(".card_display").html("<h4> Please enter both cards </h4>");
     }
 
 
@@ -138,13 +138,13 @@ function showCards() {
         html_flop += '   <div class="card ' + flop_suit1 + ' v' + flop_value1 +'">';
         html_flop += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
-        html_flop += '   <div class="card ' + flop_suit2 + ' v' + flop_value2 +' col-md-offset-1">';
+        html_flop += '   <div class="card ' + flop_suit2 + ' v' + flop_value2 +' col-md-offset-2">';
         html_flop += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
-        html_flop += '   <div class="card ' + flop_suit3 + ' v' + flop_value3 +' col-md-offset-1">';
+        html_flop += '   <div class="card ' + flop_suit3 + ' v' + flop_value3 +' col-md-offset-2">';
         html_flop += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
-        $(".flop_turn_river_display").html(html_flop);
+        $(".flop_cards").html(html_flop);
 
     }
 
@@ -156,10 +156,10 @@ function showCards() {
 
     if (turn_value && turn_suit) {
 
-        html_turn += '   <div class="card ' + turn_suit + ' v' + turn_value +' col-md-offset-1">';
+        html_turn += '   <div class="card ' + turn_suit + ' v' + turn_value +'">';
         html_turn += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
-        $(".flop_turn_river_display").append(html_turn);
+        $(".turn_card").html(html_turn);
     }
 
 }

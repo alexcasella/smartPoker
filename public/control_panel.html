@@ -473,20 +473,19 @@
                             <!------------------------------------------------------------ code ------------------------------------------------>
 
                             <div class = "container">
-                                <div>
-                                    <!-- Pre flop cards show up here -->
 
-                                    <div class = "row">
-                                        <h5>Pre-flop </h5>
-                                    </div>
-
-                                    <div class = "row" id = "card_display">
-                                        <div class="card back"></div>
-
-                                        <div class="card back col-md-offset-1"></div>
-                                    </div>
-
+                                <!-- Pre flop cards show up here -->
+                                <div class = "row">
+                                    <h5>Pre-flop </h5>
                                 </div>
+
+                                <div class = "row">
+                                    <div class = "card_display col-md-6">
+                                        <div class="card back"></div>
+                                        <div class="card back col-md-offset-2"></div>
+                                    </div>
+                                </div>
+
 
                                 <!-- Flop cards show up here -->
                                 <div id = "post_flop_display">
@@ -496,12 +495,18 @@
                                         <h5>Post-flop</h5>
                                     </div>
 
-                                    <div class = "row flop_turn_river_display">
-                                        <div class="card back"></div>
-                                        <div class="card back col-md-offset-1"></div>
-                                        <div class="card back col-md-offset-1"></div>
-                                        <div class="turn_card card back col-md-offset-1"></div>
-                                        <div class="river_card card back col-md-offset-1"></div>
+                                    <div class = "row">
+                                        <div class = "flop_cards col-md-6">
+                                            <div class="card back"></div>
+                                            <div class="card back col-md-offset-2"></div>
+                                            <div class="card back col-md-offset-2"></div>
+                                        </div>
+                                        <div class = "turn_card col-md-2">
+                                            <div class="card back"></div>
+                                        </div>
+                                        <div class = "river_card col-md-2">
+                                            <div class="card back"></div>
+                                        </div>
                                     </div>
 
                                 </div>
