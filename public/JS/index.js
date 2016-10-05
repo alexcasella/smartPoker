@@ -55,14 +55,23 @@ $( document ).ready(function() {
 
 function yesFlop() {
     $("#flop_selections").show();
-
     $("#post_flop_display").show();
 }
 
 function noFlop() {
     $("#flop_selections").hide();
-
     $("#post_flop_display").hide();
+
+    $("#flop1_value").val("");
+    $("#flop1_suit").val("");
+    $("#flop2_value").val("");
+    $("#flop2_suit").val("");
+    $("#flop3_value").val("");
+    $("#flop3_suit").val("");
+    $("#turn_suit").val("");
+    $("#turn_value").val("");
+    $("#river_suit").val("");
+    $("#river_value").val("");
 }
 
 function yesTurn() {
@@ -73,6 +82,11 @@ function yesTurn() {
 function noTurn() {
     $("#turn_selections").hide();
     $(".turn_card").hide();
+
+    $("#turn_suit").val("");
+    $("#turn_value").val("");
+    $("#river_suit").val("");
+    $("#river_value").val("");
 }
 
 function yesRiver() {
@@ -83,6 +97,9 @@ function yesRiver() {
 function noRiver() {
     $("#river_selections").hide();
     $(".river_card").hide();
+
+    $("#river_suit").val("");
+    $("#river_value").val("");
 }
 
 
@@ -109,7 +126,7 @@ function showCards() {
 
         $(".preflop_cards").html(html);
     } else {
-        $(".preflop_cards").html("<h4> Enter both cards for analysis :) </h4>");
+        $(".preflop_cards").html("<h4> Must enter both cards for analysis :) </h4>");
     }
 
 
@@ -128,7 +145,6 @@ function showCards() {
 
 
     // Flop
-
     var html_flop = "";
 
     if (flop_value1 && flop_suit1
@@ -145,7 +161,6 @@ function showCards() {
         html_flop += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
         $(".flop_cards").html(html_flop);
-
     }
 
 
@@ -208,6 +223,129 @@ function calculateOdds() {
     // River card
     var river_value = $("#river_value").val();
     var river_suit = $("#river_suit").val().toLowerCase();
+
+    // alert("The cards are: " + value1 + suit1 + ", " + value2 + suit2 + ", " + flop_value1 + flop_suit1 + ", " + flop_value2 + flop_suit2 + ", " + flop_value3 + flop_suit3 + ", " + turn_value + turn_suit + ", " + river_value + river_suit)
+
+    // No Flop
+    if (value1 && suit1 && value2 && suit2 && !flop_value1 && !flop_suit1 && !flop_value2 && !flop_suit2 && !flop_value3 && !flop_suit3 && !turn_suit && !turn_value && !river_value && !river_suit) {
+        // Flopped a pair
+        if (value1 == value2) {
+            alert("you have flopped a pair");
+        } else {
+            alert("you have nothing");
+        }
+
+        // Flop, no turn or river
+    } else if (value1 && suit1 && value2 && suit2 && flop_value1 && flop_suit1 && flop_value2 && flop_suit2 && flop_value3 && flop_suit3 && !turn_suit && !turn_value && !river_value && !river_suit) {
+
+        // Pair
+        if (value1 == value2 || value1 == flop_value1 || value1 == flop_value2 || value1 == flop_value3
+            || value2 == flop_value1 || value2 == flop_value2 || value2 == flop_value3
+            || flop_value1 == flop_value2 || flop_value1 == flop_value3 || flop_value2 == flop_value3) {
+            alert("you have a pair");
+        }
+
+        // Trips
+        if ((value1 == value2 && value1 == flop_value1)
+            || (value1 == value2 && value1 == flop_value2)
+            || (value1 == value2 && value1 == flop_value3)
+            || (value1 == flop_value1 && value1 == flop_value2)
+            || (value1 == flop_value1 && value1 == flop_value3)
+            || (value1 == flop_value2 && value1 == flop_value3)
+            || (value2 == flop_value1 && value2 == flop_value2)
+            || (value2 == flop_value1 && value2 == flop_value3)
+            || (value2 == flop_value2 && value2 == flop_value3)
+            || (flop_value1 == flop_value2 && flop_value1 == flop_value3)) {
+            alert("you have trips");
+        }
+
+        // Turn, no river
+    } else if (value1 && suit1 && value2 && suit2 && flop_value1 && flop_suit1 && flop_value2 && flop_suit2 && flop_value3 && flop_suit3 && turn_suit && turn_value && !river_value && !river_suit) {
+
+        // Pair
+        if (value1 == value2 || value1 == flop_value1 || value1 == flop_value2 || value1 == flop_value3 || value1 == turn_value
+            || value2 == flop_value1 || value2 == flop_value2 || value2 == flop_value3 || value2 == turn_value
+            || flop_value1 == flop_value2 || flop_value1 == flop_value3 || flop_value2 == flop_value3
+            || flop_value1 == turn_value || flop_value2 == turn_value || flop_value3 == turn_value) {
+            alert("you have a pair");
+        }
+
+        // Trips
+        if ((value1 == value2 && value1 == flop_value1)
+            || (value1 == value2 && value1 == flop_value2)
+            || (value1 == value2 && value1 == flop_value3)
+            || (value1 == value2 && value1 == turn_value)
+            || (value1 == flop_value1 && value1 == flop_value2)
+            || (value1 == flop_value1 && value1 == flop_value3)
+            || (value1 == flop_value1 && value1 == turn_value)
+            || (value1 == flop_value2 && value1 == flop_value3)
+            || (value1 == flop_value2 && value1 == turn_value)
+            || (value1 == flop_value3 && value1 == turn_value)
+            || (value2 == flop_value1 && value2 == flop_value2)
+            || (value2 == flop_value1 && value2 == flop_value3)
+            || (value2 == flop_value1 && value2 == turn_value)
+            || (value2 == flop_value2 && value2 == flop_value3)
+            || (value2 == flop_value2 && value2 == turn_value)
+            || (value2 == flop_value3 && value1 == turn_value)
+            || (flop_value1 == flop_value2 && flop_value1 == flop_value3)
+            || (flop_value1 == flop_value2 && flop_value1 == turn_value)
+            || (flop_value1 == flop_value3 && flop_value1 == turn_value)
+            || (flop_value2 == flop_value3 && flop_value2 == turn_value)) {
+            alert("you have trips");
+        }
+
+        // River
+    } else if (value1 && suit1 && value2 && suit2 && flop_value1 && flop_suit1 && flop_value2 && flop_suit2 && flop_value3 && flop_suit3 && turn_suit && turn_value && river_value && river_suit) {
+
+        // Pair
+        if (value1 == value2 || value1 == flop_value1 || value1 == flop_value2 || value1 == flop_value3 || value1 == turn_value || value1 == river_value
+            || value2 == flop_value1 || value2 == flop_value2 || value2 == flop_value3 || value2 == turn_value || value2 == river_value
+            || flop_value1 == flop_value2 || flop_value1 == flop_value3 || flop_value2 == flop_value3
+            || flop_value1 == turn_value || flop_value2 == turn_value || flop_value3 == turn_value
+            || flop_value1 == river_value || flop_value2 == river_value || flop_value3 == river_value
+            || turn_value == river_value) {
+            alert("you have a pair");
+        }
+
+        // Trips
+        if ((value1 == value2 && value1 == flop_value1)
+            || (value1 == value2 && value1 == flop_value2)
+            || (value1 == value2 && value1 == flop_value3)
+            || (value1 == value2 && value1 == turn_value)
+            || (value1 == value2 && value1 == river_value)
+            || (value1 == flop_value1 && value1 == flop_value2)
+            || (value1 == flop_value1 && value1 == flop_value3)
+            || (value1 == flop_value1 && value1 == turn_value)
+            || (value1 == flop_value1 && value1 == river_value)
+            || (value1 == flop_value2 && value1 == flop_value3)
+            || (value1 == flop_value2 && value1 == turn_value)
+            || (value1 == flop_value2 && value1 == river_value)
+            || (value1 == flop_value3 && value1 == turn_value)
+            || (value1 == flop_value3 && value1 == river_value)
+            || (value1 == turn_value && value1 == river_value)
+            || (value2 == flop_value1 && value2 == flop_value2)
+            || (value2 == flop_value1 && value2 == flop_value3)
+            || (value2 == flop_value1 && value2 == turn_value)
+            || (value2 == flop_value1 && value2 == river_value)
+            || (value2 == flop_value2 && value2 == flop_value3)
+            || (value2 == flop_value2 && value2 == turn_value)
+            || (value2 == flop_value2 && value1 == river_value)
+            || (value2 == flop_value3 && value1 == turn_value)
+            || (value2 == flop_value3 && value2 == river_value)
+            || (value2 == turn_value && value2 == river_value)
+            || (flop_value1 == flop_value2 && flop_value1 == flop_value3)
+            || (flop_value1 == flop_value2 && flop_value1 == turn_value)
+            || (flop_value1 == flop_value2 && flop_value1 == river_value)
+            || (flop_value1 == flop_value3 && flop_value1 == turn_value)
+            || (flop_value1 == flop_value3 && flop_value1 == river_value)
+            || (flop_value1 == turn_value && flop_value1 == river_value)
+            || (flop_value2 == flop_value3 && flop_value2 == turn_value)
+            || (flop_value2 == flop_value3 && flop_value2 == river_value)
+            || (flop_value2 == turn_value && flop_value2 == river_value)
+            || (flop_value3 == turn_value && flop_value3 == river_value)) {
+            alert("you have trips");
+        }
+    }
 }
 
 
