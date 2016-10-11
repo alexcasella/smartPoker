@@ -17,11 +17,6 @@ $( document ).ready(function() {
             noFlop();
             noTurn();
             noRiver();
-
-            // clear radio buttons after hiding
-            $('input:radio[name=flop_buttons]').prop('checked', false);
-            $('input:radio[name=turn_buttons]').prop('checked', false);
-            $('input:radio[name=river_buttons]').prop('checked', false);
         }
     });
 
@@ -33,9 +28,6 @@ $( document ).ready(function() {
         } else {
             noTurn();
             noRiver();
-
-            $('input:radio[name=turn_buttons]').prop('checked', false);
-            $('input:radio[name=river_buttons]').prop('checked', false);
         }
     });
 
@@ -46,8 +38,6 @@ $( document ).ready(function() {
             yesRiver();
         } else {
             noRiver();
-
-            $('input:radio[name=river_buttons]').prop('checked', false);
         }
     });
 });
@@ -62,6 +52,7 @@ function noFlop() {
     $("#flop_selections").hide();
     $("#post_flop_display").hide();
 
+    // clear dropdown selects after hiding
     $("#flop1_value").val("");
     $("#flop1_suit").val("");
     $("#flop2_value").val("");
@@ -72,21 +63,33 @@ function noFlop() {
     $("#turn_value").val("");
     $("#river_suit").val("");
     $("#river_value").val("");
+
+    // clear radio buttons after hiding
+    $('input:radio[name=flop_buttons]').prop('checked', false);
+    $('input:radio[name=turn_buttons]').prop('checked', false);
+    $('input:radio[name=river_buttons]').prop('checked', false);
 }
 
 function yesTurn() {
     $("#turn_selections").show();
     $(".turn_card").show();
+
+    // var html_flop += '<div class = "card back turn_card col-md-offset-1"></div><div class = "card back river_card col-md-offset-1"></div>';
 }
 
 function noTurn() {
     $("#turn_selections").hide();
     $(".turn_card").hide();
 
+    // clear dropdown selects after hiding
     $("#turn_suit").val("");
     $("#turn_value").val("");
     $("#river_suit").val("");
     $("#river_value").val("");
+
+    // clear radio buttons after hiding
+    $('input:radio[name=turn_buttons]').prop('checked', false);
+    $('input:radio[name=river_buttons]').prop('checked', false);
 }
 
 function yesRiver() {
@@ -98,8 +101,12 @@ function noRiver() {
     $("#river_selections").hide();
     $(".river_card").hide();
 
+    // clear dropdown selects after hiding
     $("#river_suit").val("");
     $("#river_value").val("");
+
+    // clear radio buttons after hiding
+    $('input:radio[name=river_buttons]').prop('checked', false);
 }
 
 
@@ -121,15 +128,17 @@ function showCards() {
         html += '   <div class="card ' + suit1 + ' v' + value1 +'">';
         html += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
-        html += '   <div class="card ' + suit2 + ' v' + value2 +' col-md-offset-2">';
+        html += '   <div class="card ' + suit2 + ' v' + value2 +' col-md-offset-1">';
         html += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
         $(".preflop_cards").html(html);
-    } else {
-        $(".preflop_cards").html("<h4> Must enter both cards for analysis :) </h4>");
     }
+    // else {
+    //     $(".preflop_cards").html("<h4> Must enter both cards for analysis :) </h4>");
+    // }
 
 
+    // Flop
 
     // First flop card
     var flop_value1 = $("#flop1_value").val();
@@ -143,24 +152,26 @@ function showCards() {
     var flop_value3 = $("#flop3_value").val();
     var flop_suit3 = $("#flop3_suit").val().toLowerCase();
 
-
-    // Flop
-    var html_flop = "";
+    var html_flop1 = "";
+    var html_flop2 = "";
+    var html_flop3 = "";
 
     if (flop_value1 && flop_suit1
         && flop_value2 && flop_suit2
         && flop_value3 && flop_suit3) {
 
-        html_flop += '   <div class="card ' + flop_suit1 + ' v' + flop_value1 +'">';
-        html_flop += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
+        html_flop1 += '   <div class="card ' + flop_suit1 + ' v' + flop_value1 +'">';
+        html_flop1 += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
-        html_flop += '   <div class="card ' + flop_suit2 + ' v' + flop_value2 +' col-md-offset-2">';
-        html_flop += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
+        html_flop2 += '   <div class="card ' + flop_suit2 + ' v' + flop_value2 +' col-md-offset-1">';
+        html_flop2 += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
-        html_flop += '   <div class="card ' + flop_suit3 + ' v' + flop_value3 +' col-md-offset-2">';
-        html_flop += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
+        html_flop3 += '   <div class="card ' + flop_suit3 + ' v' + flop_value3 +' col-md-offset-1">';
+        html_flop3 += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
-        $(".flop_cards").html(html_flop);
+        $(".flop_card1").replaceWith(html_flop1);
+        $(".flop_card2").replaceWith(html_flop2);
+        $(".flop_card3").replaceWith(html_flop3);
     }
 
 
@@ -172,10 +183,11 @@ function showCards() {
 
     if (turn_value && turn_suit) {
 
-        html_turn += '   <div class="card ' + turn_suit + ' v' + turn_value +'">';
+        html_turn += '   <div class="turn_card card ' + turn_suit + ' v' + turn_value +' col-md-offset-1">';
         html_turn += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
-        $(".turn_card").html(html_turn);
+        $(".turn_card").hide();
+        $(".turn_card").replaceWith(html_turn);
     }
 
 
@@ -187,10 +199,11 @@ function showCards() {
 
     if (river_value && river_suit) {
 
-        html_river += '   <div class="card ' + river_suit + ' v' + river_value +'">';
+        html_river += '   <div class="river_card card ' + river_suit + ' v' + river_value +' col-md-offset-1">';
         html_river += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
-        $(".river_card").html(html_river);
+        $(".river_card").hide();
+        $(".river_card").replaceWith(html_river);
     }
 
 }
@@ -245,6 +258,25 @@ function calculateOdds() {
             alert("you have a pair");
         }
 
+        // Two pair
+        if (value1 == value2 && flop_value1 == flop_value2
+            || value1 == value2 && flop_value2 == flop_value3
+            || value1 == value2 && flop_value1 == flop_value3
+            || value1 == flop_value1 && value2 == flop_value2
+            || value1 == flop_value1 && value2 == flop_value3
+            || value1 == flop_value1 && flop_value2 == flop_value3
+            || value1 == flop_value2 && value2 == flop_value1
+            || value1 == flop_value2 && value2 == flop_value3
+            || value1 == flop_value2 && flop_value1 == flop_value3
+            || value1 == flop_value3 && value2 == flop_value1
+            || value1 == flop_value3 && value2 == flop_value2
+            || value1 == flop_value3 && flop_value1 == flop_value2
+            || value2 == flop_value1 && flop_value2 == flop_value3
+            || value2 == flop_value2 && flop_value1 == flop_value3
+            || value2 == flop_value3 && flop_value1 == flop_value2) {
+            alert("you have two pairs");
+        }
+
         // Trips
         if ((value1 == value2 && value1 == flop_value1)
             || (value1 == value2 && value1 == flop_value2)
@@ -258,6 +290,8 @@ function calculateOdds() {
             || (flop_value1 == flop_value2 && flop_value1 == flop_value3)) {
             alert("you have trips");
         }
+
+
 
         // Turn, no river
     } else if (value1 && suit1 && value2 && suit2 && flop_value1 && flop_suit1 && flop_value2 && flop_suit2 && flop_value3 && flop_suit3 && turn_suit && turn_value && !river_value && !river_suit) {
