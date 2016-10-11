@@ -160,13 +160,13 @@ function showCards() {
         && flop_value2 && flop_suit2
         && flop_value3 && flop_suit3) {
 
-        html_flop1 += '   <div class="card ' + flop_suit1 + ' v' + flop_value1 +'">';
+        html_flop1 += '   <div class="flop_card1 card ' + flop_suit1 + ' v' + flop_value1 +'">';
         html_flop1 += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
-        html_flop2 += '   <div class="card ' + flop_suit2 + ' v' + flop_value2 +' col-md-offset-1">';
+        html_flop2 += '   <div class="flop_card2 card ' + flop_suit2 + ' v' + flop_value2 +' col-md-offset-1">';
         html_flop2 += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
-        html_flop3 += '   <div class="card ' + flop_suit3 + ' v' + flop_value3 +' col-md-offset-1">';
+        html_flop3 += '   <div class="flop_card3 card ' + flop_suit3 + ' v' + flop_value3 +' col-md-offset-1">';
         html_flop3 += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
         $(".flop_card1").replaceWith(html_flop1);
@@ -186,7 +186,6 @@ function showCards() {
         html_turn += '   <div class="turn_card card ' + turn_suit + ' v' + turn_value +' col-md-offset-1">';
         html_turn += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
-        $(".turn_card").hide();
         $(".turn_card").replaceWith(html_turn);
     }
 
@@ -202,7 +201,6 @@ function showCards() {
         html_river += '   <div class="river_card card ' + river_suit + ' v' + river_value +' col-md-offset-1">';
         html_river += '   <div class="top"><div class="number"></div><div class="suit"></div></div><div class="bottom"><div class="number"></div><div class="suit"></div></div></div>';
 
-        $(".river_card").hide();
         $(".river_card").replaceWith(html_river);
     }
 
@@ -304,6 +302,56 @@ function calculateOdds() {
             alert("you have a pair");
         }
 
+        // Two pair
+        if (value1 == value2 && flop_value1 == flop_value2
+            || value1 == value2 && flop_value2 == flop_value3
+            || value1 == value2 && flop_value1 == flop_value3
+            || value1 == value2 && flop_value1 == turn_value
+            || value1 == value2 && flop_value2 == turn_value
+            || value1 == value2 && flop_value3 == turn_value
+            || value1 == flop_value1 && value2 == flop_value2
+            || value1 == flop_value1 && value2 == flop_value3
+            || value1 == flop_value1 && flop_value2 == flop_value3
+            || value1 == flop_value1 && value2 == turn_value
+            || value1 == flop_value1 && flop_value2 == turn_value
+            || value1 == flop_value1 && flop_value3 == turn_value
+            || value1 == flop_value2 && value2 == flop_value1
+            || value1 == flop_value2 && value2 == flop_value3
+            || value1 == flop_value2 && flop_value1 == flop_value3
+            || value1 == flop_value2 && value2 == turn_value
+            || value1 == flop_value2 && flop_value1 == turn_value
+            || value1 == flop_value2 && flop_value3 == turn_value
+            || value1 == flop_value3 && value2 == flop_value1
+            || value1 == flop_value3 && value2 == flop_value2
+            || value1 == flop_value3 && flop_value1 == flop_value2
+            || value1 == flop_value3 && value2 == turn_value
+            || value1 == flop_value3 && flop_value1 == turn_value
+            || value1 == flop_value3 && flop_value2 == turn_value
+            || value1 == turn_value && value2 == flop_value1
+            || value1 == turn_value && value2 == flop_value2
+            || value1 == turn_value && value2 == flop_value3
+            || value1 == turn_value && flop_value1 == flop_value2
+            || value1 == turn_value && flop_value1 == flop_value3
+            || value1 == turn_value && flop_value2 == flop_value3
+            || value2 == flop_value1 && flop_value2 == flop_value3
+            || value2 == flop_value1 && flop_value2 == turn_value
+            || value2 == flop_value1 && flop_value3 == turn_value
+            || value2 == flop_value2 && flop_value1 == flop_value3
+            || value2 == flop_value2 && flop_value1 == turn_value
+            || value2 == flop_value2 && flop_value3 == turn_value
+            || value2 == flop_value3 && flop_value1 == flop_value2
+            || value2 == flop_value3 && flop_value1 == turn_value
+            || value2 == flop_value3 && flop_value2 == turn_value
+            || value2 == turn_value && flop_value1 == flop_value2
+            || value2 == turn_value && flop_value1 == flop_value3
+            || value2 == turn_value && flop_value2 == flop_value3
+            || flop_value1 == flop_value2 && flop_value3 == turn_value
+            || flop_value1 == flop_value3 && flop_value2 == turn_value
+            || flop_value1 == turn_value && flop_value2 == flop_value3
+        ) {
+            alert("you have two pairs");
+        }
+
         // Trips
         if ((value1 == value2 && value1 == flop_value1)
             || (value1 == value2 && value1 == flop_value2)
@@ -339,6 +387,116 @@ function calculateOdds() {
             || flop_value1 == river_value || flop_value2 == river_value || flop_value3 == river_value
             || turn_value == river_value) {
             alert("you have a pair");
+        }
+
+        // Two pair
+        if (value1 == value2 && flop_value1 == flop_value2
+            || value1 == value2 && flop_value2 == flop_value3
+            || value1 == value2 && flop_value1 == flop_value3
+            || value1 == value2 && flop_value1 == turn_value
+            || value1 == value2 && flop_value2 == turn_value
+            || value1 == value2 && flop_value3 == turn_value
+            || value1 == value2 && flop_value1 == river_value
+            || value1 == value2 && flop_value2 == river_value
+            || value1 == value2 && flop_value3 == river_value
+            || value1 == value2 && turn_value == river_value
+            || value1 == flop_value1 && value2 == flop_value2
+            || value1 == flop_value1 && value2 == flop_value3
+            || value1 == flop_value1 && flop_value2 == flop_value3
+            || value1 == flop_value1 && value2 == turn_value
+            || value1 == flop_value1 && flop_value2 == turn_value
+            || value1 == flop_value1 && flop_value3 == turn_value
+            || value1 == flop_value1 && value2 == river_value
+            || value1 == flop_value1 && flop_value2 == river_value
+            || value1 == flop_value1 && flop_value3 == river_value
+            || value1 == flop_value1 && turn_value == river_value
+            || value1 == flop_value2 && value2 == flop_value1
+            || value1 == flop_value2 && value2 == flop_value3
+            || value1 == flop_value2 && flop_value1 == flop_value3
+            || value1 == flop_value2 && value2 == turn_value
+            || value1 == flop_value2 && flop_value1 == turn_value
+            || value1 == flop_value2 && flop_value3 == turn_value
+            || value1 == flop_value2 && value2 == river_value
+            || value1 == flop_value2 && flop_value1 == river_value
+            || value1 == flop_value2 && flop_value3 == river_value
+            || value1 == flop_value2 && turn_value == river_value
+            || value1 == flop_value3 && value2 == flop_value1
+            || value1 == flop_value3 && value2 == flop_value2
+            || value1 == flop_value3 && flop_value1 == flop_value2
+            || value1 == flop_value3 && value2 == turn_value
+            || value1 == flop_value3 && flop_value1 == turn_value
+            || value1 == flop_value3 && flop_value2 == turn_value
+            || value1 == flop_value3 && value2 == river_value
+            || value1 == flop_value3 && flop_value1 == river_value
+            || value1 == flop_value3 && flop_value2 == river_value
+            || value1 == flop_value3 && turn_value == river_value
+            || value1 == turn_value && value2 == flop_value1
+            || value1 == turn_value && value2 == flop_value2
+            || value1 == turn_value && value2 == flop_value3
+            || value1 == turn_value && flop_value1 == flop_value2
+            || value1 == turn_value && flop_value1 == flop_value3
+            || value1 == turn_value && flop_value2 == flop_value3
+            || value1 == turn_value && value2 == river_value
+            || value1 == turn_value && flop_value1 == river_value
+            || value1 == turn_value && flop_value2 == river_value
+            || value1 == turn_value && flop_value3 == river_value
+            || value1 == river_value && value2 == flop_value1
+            || value1 == river_value && value2 == flop_value2
+            || value1 == river_value && value2 == flop_value3
+            || value1 == river_value && value2 == turn_value
+            || value1 == river_value && flop_value1 == flop_value2
+            || value1 == river_value && flop_value1 == flop_value3
+            || value1 == river_value && flop_value1 == turn_value
+            || value1 == river_value && flop_value2 == flop_value3
+            || value1 == river_value && flop_value2 == turn_value
+            || value1 == river_value && flop_value3 == turn_value
+            || value2 == flop_value1 && flop_value2 == flop_value3
+            || value2 == flop_value1 && flop_value2 == turn_value
+            || value2 == flop_value1 && flop_value3 == turn_value
+            || value2 == flop_value1 && flop_value2 == river_value
+            || value2 == flop_value1 && flop_value3 == river_value
+            || value2 == flop_value1 && turn_value == river_value
+            || value2 == flop_value2 && flop_value1 == flop_value3
+            || value2 == flop_value2 && flop_value1 == turn_value
+            || value2 == flop_value2 && flop_value3 == turn_value
+            || value2 == flop_value2 && flop_value1 == river_value
+            || value2 == flop_value2 && flop_value3 == river_value
+            || value2 == flop_value2 && turn_value == river_value
+            || value2 == flop_value3 && flop_value1 == flop_value2
+            || value2 == flop_value3 && flop_value1 == turn_value
+            || value2 == flop_value3 && flop_value2 == turn_value
+            || value2 == flop_value3 && flop_value1 == river_value
+            || value2 == flop_value3 && flop_value2 == river_value
+            || value2 == flop_value3 && turn_value == river_value
+            || value2 == turn_value && flop_value1 == flop_value2
+            || value2 == turn_value && flop_value1 == flop_value3
+            || value2 == turn_value && flop_value2 == flop_value3
+            || value2 == turn_value && flop_value1 == river_value
+            || value2 == turn_value && flop_value2 == river_value
+            || value2 == turn_value && flop_value3 == river_value
+            || value2 == river_value && flop_value1 == flop_value2
+            || value2 == river_value && flop_value1 == flop_value3
+            || value2 == river_value && flop_value2 == flop_value3
+            || value2 == river_value && flop_value1 == turn_value
+            || value2 == river_value && flop_value2 == turn_value
+            || value2 == river_value && flop_value3 == turn_value
+            || flop_value1 == flop_value2 && flop_value3 == turn_value
+            || flop_value1 == flop_value2 && flop_value3 == river_value
+            || flop_value1 == flop_value2 && turn_value == river_value
+            || flop_value1 == flop_value3 && flop_value2 == turn_value
+            || flop_value1 == flop_value3 && flop_value2 == river_value
+            || flop_value1 == flop_value3 && turn_value == river_value
+            || flop_value1 == turn_value && flop_value2 == flop_value3
+            || flop_value1 == turn_value && flop_value2 == river_value
+            || flop_value1 == turn_value && flop_value3 == river_value
+            || flop_value1 == river_value && flop_value2 == flop_value3
+            || flop_value1 == river_value && flop_value2 == turn_value
+            || flop_value1 == river_value && flop_value3 == turn_value
+            || flop_value2 == flop_value3 && turn_value == river_value
+            || flop_value2 == turn_value && flop_value3 == river_value
+            || flop_value2 == river_value && flop_value3 == turn_value
+        ) {
+            alert("you have two pairs");
         }
 
         // Trips
