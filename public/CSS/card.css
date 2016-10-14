@@ -152,6 +152,10 @@
     content: 'K';
 }
 
+.v14 .number::before {
+    content: 'A';
+}
+
 .card.back {
     /* add style here! :D */
     background-color: #F9BA15;
