@@ -145,6 +145,19 @@ function showCards() {
 
 
 function calculateHands() {
+
+    // clears the control panel
+    $(".quads_prob").html("");
+    $(".trips_prob").html("");
+    $(".pair_prob").html("");
+    $(".two_pair_prob").html("");
+    $(".full_house_prob").html("");
+    $(".straight_prob").html("");
+    $(".flush_prob").html("");
+    $(".straight_flush_prob").html("");
+    $(".royal_flush_prob").html("");
+
+
     // First card pre-flop
     var value1 = parseInt($("#card1_value").val(), 10);
     var suit1 = $("#card1_suit").val().toLowerCase();
@@ -178,7 +191,8 @@ function calculateHands() {
     if (value1 && suit1 && value2 && suit2 && !flop_value1 && !flop_suit1 && !flop_value2 && !flop_suit2 && !flop_value3 && !flop_suit3 && !turn_suit && !turn_value && !river_value && !river_suit) {
         // Flopped a pair
         if (value1 == value2) {
-            alert("you have flopped a pair");
+            $(".pair_prob").html("100% " + value1);
+            // alert("you have flopped a pair");
         }
     }
 
@@ -210,143 +224,175 @@ function calculateHands() {
         masterArray = [[value1, suit1], [value2, suit2], [flop_value1, flop_suit1], [flop_value2, flop_suit2], [flop_value3, flop_suit3], [turn_value, turn_suit], [river_value, river_suit]];
     }
 
-    valueArray.sort(sortCards);
-    masterArray.sort(sortMasterArray_combined);
+    if (valueArray && masterArray) {
+        valueArray.sort(sortCards);
+        masterArray.sort(sortMasterArray_combined);
 
-    // masterArray.sort(sortMasterArray_suit);
-    // masterArray.sort(sortMasterArray_value);
+        // masterArray.sort(sortMasterArray_suit);
+        // masterArray.sort(sortMasterArray_value);
 
+        // Pairs, Trips, and Quads
+        // =======================================================================================================
 
+        var highestPair;
+        var highestTrips;
+        var highestQuads;
+        var pairCounter = 0;
 
-    // Pairs, Trips, and Quads
-    // =======================================================================================================
-
-    var highestPair;
-    var highestTrips;
-    var highestQuads;
-    var pairCounter = 0;
-
-    for (i = 0; i < valueArray.length; i++) {
-        for (j = 0; j < allValues.length; j++) {
-            if (valueArray[i] === allValues[j][0]) {
-                allValues[j][1]++;
-            }
-        }
-    }
-
-    for (i = 0; i < allValues.length; i++) {
-        if (allValues[i][1] === 2) {
-            highestPair = allValues[i][0];
-            pairCounter++;
-        }
-
-        if (allValues[i][1] === 3) {
-            highestTrips = allValues[i][0];
-
-            // If trip cards are higher than pair cards
-            if (highestTrips > highestPair) {
-                highestPair = highestTrips;
+        for (i = 0; i < valueArray.length; i++) {
+            for (j = 0; j < allValues.length; j++) {
+                if (valueArray[i] === allValues[j][0]) {
+                    allValues[j][1]++;
+                }
             }
         }
 
-        if (allValues[i][1] === 4) {
-            highestQuads = allValues[i][0];
-        }
-    }
+        for (i = 0; i < allValues.length; i++) {
+            if (allValues[i][1] === 2) {
+                highestPair = allValues[i][0];
+                pairCounter++;
+            }
 
-    if (pairCounter === 1) {
-        alert("You have one pair. Highest pair: " + highestPair);
-    } else if (pairCounter === 2) {
-        alert("You have two pairs. Highest pair: " + highestPair);
-    }
+            if (allValues[i][1] === 3) {
+                highestTrips = allValues[i][0];
 
-    if (highestTrips) {
-        alert("Highest trips: " + highestTrips);
-    }
+                // If trip cards are higher than pair cards
+                if (highestTrips > highestPair) {
+                    highestPair = highestTrips;
+                }
+            }
 
-    if (highestQuads) {
-        alert("Highest quads: " + highestQuads);
-    }
+            if (allValues[i][1] === 4) {
+                highestQuads = allValues[i][0];
 
-
-    // Full house
-    // =======================================================================================================
-    if (pairCounter >= 1 && highestTrips) {
-        alert("You have full house");
-    }
-
-
-    // Straight
-    // =======================================================================================================
-
-    var valueCount = 1;
-
-    for (i = 0; i < valueArray.length; i++) {
-        if (valueArray[i] + 1 === valueArray[i + 1]) {
-            valueCount++;
-        }
-    }
-
-    if (valueCount >= 5) {
-        alert("you have a straight");
-    } else if (valueCount === 4 && Math.min.apply(Math, valueArray) === 2 && Math.max.apply(Math, valueArray) === 14) {
-        alert("you have a straight (wheel)");
-    }
-
-
-    // Flush
-    // =======================================================================================================
-
-    for (i = 0; i < suitArray.length; i++) {
-        for (j = 0; j < allSuits.length; j++) {
-            if (suitArray[i] === allSuits[j][0]) {
-                allSuits[j][1]++;
+                // If Quad cards are higher than pair cards
+                if (highestQuads > highestPair) {
+                    highestPair = highestQuads;
+                }
+                // If Quad cards are higher than pair cards
+                else if (highestQuads > highestTrips) {
+                    highestTrips = highestQuads;
+                }
             }
         }
-    }
 
-    for (i = 0; i < allSuits.length; i++) {
-        if (allSuits[i][1] >= 5) {
-            alert("you have a flush");
-        }
-    }
+        if (pairCounter === 1) {
+            $(".pair_prob").html("100% " + highestPair);
+            // alert("You have one pair. Highest pair: " + highestPair);
 
-
-    // Straight Flush, Royal Flush
-    // =======================================================================================================
-
-    var valueCount_masterArray = 1;
-    var suitCount_masterArray = 1;
-
-    i = 0;
-
-    // alert(masterArray);
-
-    while (i + 1 < masterArray.length) {
-        if (masterArray[i][0] + 1 == masterArray[i + 1][0]) {
-            valueCount_masterArray++;
+        } else if (pairCounter >= 2) {
+            $(".pair_prob").html("100% " + highestPair);
+            $(".two_pair_prob").html("100% " + highestPair);
+            // alert("You have two pairs. Highest pair: " + highestPair);
         }
 
-        if (masterArray[i][1] == masterArray[i + 1][1]) {
-            suitCount_masterArray++;
+        if (highestTrips) {
+            $(".trips_prob").html("100% " + highestTrips);
+            // alert("Highest trips: " + highestTrips);
         }
 
-        i++;
-    }
-
-
-    // alert("VALUE count: " + valueCount_masterArray);
-    // alert("SUIT count: " + suitCount_masterArray);
-
-    if (valueCount_masterArray >= 5 && suitCount_masterArray >= 5) {
-        alert("you have straight flush");
-        if (Math.max.apply(Math, valueArray) === 14) {
-            alert("you have the royal flush");
+        if (highestQuads) {
+            $(".quads_prob").html("100% " + highestQuads);
+            // alert("Highest quads: " + highestQuads);
         }
-    } else if (valueCount_masterArray >= 4 && suitCount_masterArray >= 5 && Math.min.apply(Math, valueArray) === 2 && Math.max.apply(Math, valueArray) === 14) {
-        alert("you have an iron wheel");
+
+
+        // Full house
+        // =======================================================================================================
+        if (pairCounter >= 1 && highestTrips) {
+            $(".full_house_prob").html("100% " + highestTrips);
+            // alert("You have full house");
+        }
+
+
+        // Straight
+        // =======================================================================================================
+
+        var valueCount = 1;
+
+        for (i = 0; i < valueArray.length; i++) {
+            if (valueArray[i] + 1 === valueArray[i + 1]) {
+                valueCount++;
+            }
+        }
+
+        if (valueCount >= 5) {
+            $(".straight_prob").html("100%");
+            // alert("you have a straight");
+        } else if (valueCount === 4 && Math.min.apply(Math, valueArray) === 2 && Math.max.apply(Math, valueArray) === 14) {
+            $(".straight_prob").html("100% wheel");
+            // alert("you have a straight (wheel)");
+        }
+
+
+        // Flush
+        // =======================================================================================================
+
+        for (i = 0; i < suitArray.length; i++) {
+            for (j = 0; j < allSuits.length; j++) {
+                if (suitArray[i] === allSuits[j][0]) {
+                    allSuits[j][1]++;
+                }
+            }
+        }
+
+        for (i = 0; i < allSuits.length; i++) {
+            if (allSuits[i][1] >= 5) {
+                $(".flush_prob").html("100%");
+                // alert("you have a flush");
+            }
+        }
+
+
+        // Straight Flush, Royal Flush
+        // =======================================================================================================
+
+        var valueCount_masterArray = 1;
+        var suitCount_masterArray = 1;
+
+        i = 0;
+
+        // alert(masterArray);
+
+        while (i + 1 < masterArray.length) {
+            if (masterArray[i][0] + 1 == masterArray[i + 1][0]) {
+                valueCount_masterArray++;
+            }
+
+            if (masterArray[i][1] == masterArray[i + 1][1]) {
+                suitCount_masterArray++;
+            }
+
+            i++;
+        }
+
+
+        // alert("VALUE count: " + valueCount_masterArray);
+        // alert("SUIT count: " + suitCount_masterArray);
+
+        if (valueCount_masterArray >= 5 && suitCount_masterArray >= 5) {
+            $(".straight_prob").html("100%");
+            $(".flush_prob").html("100%");
+            $(".straight_flush_prob").html("100%");
+
+            // alert("you have straight flush");
+
+            if (Math.max.apply(Math, valueArray) === 14) {
+                $(".royal_flush_prob").html("100%");
+
+                // alert("you have the royal flush");
+            }
+        } else if (valueCount_masterArray >= 4 && suitCount_masterArray >= 5 && Math.min.apply(Math, valueArray) === 2 && Math.max.apply(Math, valueArray) === 14) {
+            $(".straight_prob").html("100%");
+            $(".flush_prob").html("100%");
+            $(".straight_flush_prob").html("100%");
+
+            // alert("you have an iron wheel");
+        }
     }
 }
+
+
 
 
 
