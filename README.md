@@ -1,11 +1,12 @@
 # Smart Poker
-> an app that aims to eliminate the element of luck in winning poker games
+> an app that aims to eliminate the element of luck in winning poker games by hand analysis and predicting opponents' strategy
 
-Technologies used:
+Tools used:
 * Node.js
-* AngularJS
 * JQuery
 * Bootstrap
+* Javascript
 * CSS
+* HTML
 
-*Current stage:* enter a poker hand and display it on screen
+*Current stage:* Display cards on screen and checks player's hands
